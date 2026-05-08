@@ -1,44 +1,38 @@
 import pandas as pd
 
-# Load datasets
+# load data
 orders = pd.read_csv("olist_orders_dataset.csv")
 customers = pd.read_csv("olist_customers_dataset.csv")
 reviews = pd.read_csv("olist_order_reviews_dataset.csv")
 
-# Merge datasets
-df = orders.merge(customers, on="customer_id", how="left")
-df = df.merge(reviews, on="order_id", how="left")
+# merge
+df = orders.merge(customers, on="customer_id")
+df = df.merge(reviews, on="order_id")
 
-# Convert dates
+# dates
 df["order_delivered_customer_date"] = pd.to_datetime(df["order_delivered_customer_date"])
 df["order_estimated_delivery_date"] = pd.to_datetime(df["order_estimated_delivery_date"])
 
-# Clean missing values
+# clean
 df = df.dropna(subset=[
     "order_delivered_customer_date",
     "order_estimated_delivery_date",
     "review_score"
 ])
 
-# Create delay column
+# delay
 df["delay_days"] = (
     df["order_delivered_customer_date"] - df["order_estimated_delivery_date"]
 ).dt.days
 
-# Delivery status
-def status(x):
-    if x <= 0:
-        return "On Time"
-    elif x <= 5:
-        return "Late"
-    else:
-        return "Super Late"
+# status
+df["delivery_status"] = df["delay_days"].apply(
+    lambda x: "On Time" if x <= 0 else ("Late" if x <= 5 else "Super Late")
+)
 
-df["delivery_status"] = df["delay_days"].apply(status)
+# quick insights
+print(df.groupby("customer_state")["delivery_status"].apply(lambda x: (x=="Late").mean()*100).head())
+print(df.groupby("delivery_status")["review_score"].mean())
 
-# Save final dataset
+# save
 df.to_csv("cleaned_master_data.csv", index=False)
-
-# Quick check
-print(df.shape)
-print(df.columns)
