@@ -9,7 +9,7 @@ The analysis found that late deliveries are strongly connected to lower customer
 
 ## Project Links
 
-- Notebook: Add your Colab link here
+- Notebook: https://colab.research.google.com/drive/18kol_OPx_hyfISGPI9Rmc7PTZP76z7vW?usp=sharing
 - Dashboard: Add dashboard link here
 - Presentation: Add presentation link here
 
