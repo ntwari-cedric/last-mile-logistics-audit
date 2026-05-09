@@ -1,54 +1,36 @@
 # Last Mile Logistics Auditor
 
-## A. Executive Summary
+## Executive Summary
 
-This project analyzes delivery performance using the Olist Brazilian E-Commerce dataset. The goal was to identify whether delayed deliveries are affecting customer satisfaction and whether certain regions experience worse delivery performance than others.
-
-The analysis showed that late deliveries significantly reduce customer review scores. Some states also experience a much higher percentage of delayed orders, suggesting regional logistics challenges. An additional analysis revealed which states have the highest average delivery delays, helping identify operational risk areas.
-
-This project combines data engineering, data cleaning, visualization, and business insight generation to support logistics decision-making.
+This project analyzes delivery performance using the Olist E-Commerce dataset.  
+The analysis found that late deliveries are strongly connected to lower customer review scores. Some states showed significantly higher delay percentages than others, suggesting regional logistics challenges. The project also identified states with the highest average delivery delays to help prioritize operational improvements.
 
 ---
 
-## B. Project Links
+## Project Links
 
-- GitHub Repository: [Add Your GitHub Link Here]
-- Notebook: [Add Notebook Link Here]
-- Dashboard: [Add Dashboard Link Here]
-- Presentation: [Add Presentation Link Here]
+- Notebook: Add your Colab link here
+- Dashboard: Add dashboard link here
+- Presentation: Add presentation link here
 
 ---
 
-## C. Technical Explanation
+## Technical Explanation
 
 ### Data Cleaning
-- Loaded and merged orders, customers, and review datasets using pandas.
-- Removed rows with missing delivery dates or review scores.
-- Converted delivery date columns into datetime format.
-- Created a new `delay_days` column to calculate delivery performance.
-- Classified deliveries into:
-  - On Time
-  - Late
-  - Super Late
+- Merged orders, customers, and reviews datasets
+- Removed missing delivery dates and review scores
+- Converted date columns into datetime format
+- Created delay_days and delivery_status columns
 
-### Candidate’s Choice Feature
-An additional analysis was added to calculate the average delivery delay by state. This helps identify the regions with the most severe logistics performance issues and provides more actionable business insights for operational planning.
+### Candidate's Choice
+I added an additional analysis showing the states with the highest average delay days. This helps the business identify which regions consistently underperform and require logistics improvements.
 
 ---
 
-## Key Insights
-
-- Late deliveries strongly reduce customer satisfaction.
-- Some states experience significantly higher late delivery rates.
-- Remote regions appear to face larger delivery delays.
-- Delivery estimation accuracy is an important factor in customer experience.
-
----
-
-## Technologies Used
-
+## Tools Used
 - Python
 - Pandas
 - Matplotlib
+- Google Colab
 - GitHub
-- VS Code
