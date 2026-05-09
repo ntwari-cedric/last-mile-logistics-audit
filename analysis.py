@@ -36,3 +36,18 @@ print(df.groupby("delivery_status")["review_score"].mean())
 
 # save
 df.to_csv("cleaned_master_data.csv", index=False)
+
+# CANDIDATE'S CHOICE FEATURE
+
+avg_delay = df.groupby("customer_state")["delay_days"].mean()
+
+avg_delay.sort_values(ascending=False).head(10).plot(
+    kind="bar",
+    color="red"
+)
+
+plt.title("Top 10 States with Highest Average Delay")
+plt.xlabel("State")
+plt.ylabel("Average Delay (Days)")
+plt.tight_layout()
+plt.show()
